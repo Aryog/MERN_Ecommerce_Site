@@ -7,7 +7,10 @@ if (process.env.FROM_DOCKER === 'true') {
 }
 const connectToMongo = async () => {
   try {
-    const connect = await mongoose.connect(mongoUri);
+    const connect = await mongoose.connect(mongoUri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
     console.log("Database connected");
   } catch (error) {
     console.log(error);

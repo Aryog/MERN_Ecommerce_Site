@@ -13,6 +13,7 @@ services:
       - "5000:5000"
     volumes:
       - ./backend:/app/server
+      - /app/server/node_modules
     depends_on:
       - database
     environment:
@@ -31,6 +32,7 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/app/client
+      - /app/client/node_modules
     depends_on:
       - backend
     networks:
