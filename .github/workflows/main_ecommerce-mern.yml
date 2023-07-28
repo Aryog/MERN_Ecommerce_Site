@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://ecomme.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_dabce2eceb6d4a9fb540a4c028f3b9c1 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_5d08420eec7443abaf83aa2ad7912a16 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_0841ca64108441608c708d36fecad68d }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_ef5f6fc0b0004911b9cad5de4001a04b }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: ecomme.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_dabce2eceb6d4a9fb540a4c028f3b9c1 }}/frontend:${{ github.sha }}
+        tags: ecomme.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0841ca64108441608c708d36fecad68d }}/frontend:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'ecommerce-mern'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_f2259bbfd8da45b1a922f15a2c0136b7 }}
-        images: 'ecomme.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_dabce2eceb6d4a9fb540a4c028f3b9c1 }}/frontend:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_15d214d349c04027a156718a686f8906 }}
+        images: 'ecomme.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_0841ca64108441608c708d36fecad68d }}/frontend:${{ github.sha }}'
